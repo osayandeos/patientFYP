@@ -15,7 +15,9 @@ import {
 import { parseStringify } from "../utils";
 
 // CREATE APPWRITE USER
+// Adding them to the user database
 export const createUser = async (user: CreateUserParams) => {
+  // Logic for creating a new authentication appwrite user
   try {
     // Create new user -> https://appwrite.io/docs/references/1.5.x/server-nodejs/users#create
     const newuser = await users.create(
