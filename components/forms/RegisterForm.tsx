@@ -45,6 +45,7 @@ const RegisterForm = ({ user }: { user: User }) => {
 
     // Store file info in form data as
     let formData;
+    // check if we have an actual file
     if (
       values.identificationDocument &&
       values.identificationDocument?.length > 0
@@ -59,11 +60,13 @@ const RegisterForm = ({ user }: { user: User }) => {
     }
 
     try {
+      // const patientData
       const patient = {
         userId: user.$id,
         name: values.name,
         email: values.email,
         phone: values.phone,
+        //
         birthDate: new Date(values.birthDate),
         gender: values.gender,
         address: values.address,
@@ -119,7 +122,8 @@ const RegisterForm = ({ user }: { user: User }) => {
             fieldType={FormFieldType.INPUT}
             control={form.control}
             name="name"
-            placeholder="John Doe"
+            label="Full name"
+            placeholder="Firstname Surname"
             iconSrc="/assets/icons/user.svg"
             iconAlt="user"
           />
@@ -131,7 +135,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="email"
               label="Email address"
-              placeholder="johndoe@gmail.com"
+              placeholder="example@example.com"
               iconSrc="/assets/icons/email.svg"
               iconAlt="email"
             />
@@ -141,7 +145,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="phone"
               label="Phone Number"
-              placeholder="(555) 123-4567"
+              placeholder="(419) 123-4567"
             />
           </div>
 
@@ -151,7 +155,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               fieldType={FormFieldType.DATE_PICKER}
               control={form.control}
               name="birthDate"
-              label="Date of birth"
+              label="Date of Birth"
             />
 
             <CustomFormField
@@ -187,7 +191,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="address"
               label="Address"
-              placeholder="14 street, New york, NY - 5101"
+              placeholder="14 Ilisha, Babcock, Ogun"
             />
 
             <CustomFormField
@@ -281,7 +285,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               fieldType={FormFieldType.TEXTAREA}
               control={form.control}
               name="currentMedication"
-              label="Current medications"
+              label="Current medications (if any)"
               placeholder="Ibuprofen 200mg, Levothyroxine 50mcg"
             />
           </div>
@@ -293,7 +297,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="familyMedicalHistory"
               label=" Family medical history (if relevant)"
-              placeholder="Mother had brain cancer, Father has hypertension"
+              placeholder="Mother had stroke, Father has diabetes"
             />
 
             <CustomFormField
@@ -301,7 +305,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="pastMedicalHistory"
               label="Past medical history"
-              placeholder="Appendectomy in 2015, Asthma diagnosis in childhood"
+              placeholder="Typhoid in 2015, Malaria in childhood"
             />
           </div>
         </section>
@@ -316,7 +320,7 @@ const RegisterForm = ({ user }: { user: User }) => {
             control={form.control}
             name="identificationType"
             label="Identification Type"
-            placeholder="Select identification type"
+            placeholder="Select an identification type"
           >
             {IdentificationTypes.map((type, i) => (
               <SelectItem key={type + i} value={type}>

@@ -48,8 +48,10 @@ export const AppointmentForm = ({
         ? new Date(appointment?.schedule!)
         : new Date(Date.now()),
       reason: appointment ? appointment.reason : "",
+      // note: appointment? appointment.note: "",
       note: appointment?.note || "",
       cancellationReason: appointment?.cancellationReason || "",
+      // cancellationReason: appointment? appointment.cancellationReason: "",
     },
   });
 
@@ -63,6 +65,9 @@ export const AppointmentForm = ({
       case "schedule":
         status = "scheduled";
         break;
+      // case "create":
+      //   buttonLabel = "Create Appointment";
+      //   break;
       case "cancel":
         status = "cancelled";
         break;
@@ -93,6 +98,7 @@ export const AppointmentForm = ({
       } else {
         const appointmentToUpdate = {
           userId,
+          //
           appointmentId: appointment?.$id!,
           appointment: {
             primaryPhysician: values.primaryPhysician,
@@ -182,7 +188,7 @@ export const AppointmentForm = ({
                 control={form.control}
                 name="reason"
                 label="Appointment reason"
-                placeholder="Annual montly check-up"
+                placeholder="Enter reason for appointment"
                 disabled={type === "schedule"}
               />
 
@@ -191,7 +197,7 @@ export const AppointmentForm = ({
                 control={form.control}
                 name="note"
                 label="Comments/notes"
-                placeholder="Prefer afternoon appointments, if possible"
+                placeholder="Enter Notes"
                 disabled={type === "schedule"}
               />
             </div>
@@ -204,7 +210,7 @@ export const AppointmentForm = ({
             control={form.control}
             name="cancellationReason"
             label="Reason for cancellation"
-            placeholder="Urgent meeting came up"
+            placeholder="Enter reason for cancellation"
           />
         )}
 
