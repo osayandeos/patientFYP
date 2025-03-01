@@ -9,6 +9,13 @@ const nextConfig = {
   },
 };
 
+module.exports = {
+  sentry: {
+    disableServerWebpackPlugin: process.env.NODE_ENV !== "production",
+    disableClientWebpackPlugin: process.env.NODE_ENV !== "production",
+  },
+};
+
 export default withSentryConfig(
   withSentryConfig(nextConfig, {
     // For all available options, see:
